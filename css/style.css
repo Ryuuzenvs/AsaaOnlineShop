@@ -1,3 +1,12 @@
+/* Aturan umum untuk semua perangkat */
+body, html {
+  
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -28,14 +37,6 @@ p {
   display: flex;
   justify-content: flex-end; /* Mengatur agar elemen anak berada di ujung kanan */
 }
-
-/* Untuk layar yang lebih kecil, ubah arah flex menjadi kolom */
-@media (max-width: 768px) {
-  .rowFlexEnd {
-      flex-direction: column;
-  }
-}
-
 
 .col1 {
   width: 5.3333333333%;
@@ -143,7 +144,7 @@ p {
   color: black;
   font-size: 16px;
   line-height: 1.5;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .btn {
@@ -267,3 +268,97 @@ p {
 .copyright a{
   color: #eee;
 }
+
+/* Untuk layar dengan lebar maksimal 1200px */
+@media (max-width: 1200px) {
+  .container {
+      width: 100%;
+      padding: 10px;
+  }
+
+  .sidebar {
+      width: 100%;
+      margin-top: 20px;
+  }
+
+  .content {
+      width: 100%;
+      padding: 10px;
+  }
+}
+
+/* Untuk layar dengan lebar maksimal 992px */
+@media (max-width: 992px) {
+  .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .navbar-menu {
+      display: block;
+      width: 100%;
+  }
+
+  .content {
+      width: 100%;
+      padding: 10px;
+  }
+
+  .sidebar {
+      width: 100%;
+      margin-top: 20px;
+  }
+
+  .footer {
+      width: 100%;
+      text-align: center;
+  }
+}
+
+/* Untuk layar dengan lebar maksimal 768px */
+@media (max-width: 768px) {
+  .header, .content, .footer {
+      padding: 15px;
+      text-align: center;
+  }
+
+  .navbar {
+      display: block;
+  }
+
+  .navbar-menu {
+      display: block;
+      width: 100%;
+  }
+
+  .container {
+      padding: 0 15px;
+  }
+
+  .sidebar {
+      display: none;
+  }
+}
+
+/* Untuk layar dengan lebar maksimal 576px */
+@media (max-width: 576px) {
+  .header, .content, .footer {
+      padding: 10px;
+  }
+
+  .container {
+      padding: 0 10px;
+  }
+
+  .navbar-menu {
+      display: block;
+      width: 100%;
+  }
+
+  .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+}
+
+
