@@ -139,6 +139,7 @@ p {
 .nav .nav-menu a {
   display: inline-block;
   margin: 0.1rem;
+  font-weight: bold;
 }
 .nav .nav-menu a::after {
   content: "";
@@ -152,7 +153,6 @@ p {
   font-weight: bold;
   transform: scaleX(0.5);
 }
-
 
 .nav .nav-extra {
   padding-top: 0.6rem;
@@ -320,15 +320,35 @@ p {
   color: #eee;
 }
 
-.spacer10{
-  
-}
-
 /* media queries */
 /* laptop */
 @media (max-width: 1366px) {
   html {
     font-size: 75%;
+  }
+
+  /* .col3{
+    width: 22%;
+  } */
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 70%;
+  }
+
+  /* .col3{
+    width: 22%;
+  } */
+}
+
+@media (max-width: 960) {
+  html {
+    font-size: 65%;
+  }
+
+  .col3 {
+    width: 22.3;
   }
 }
 
@@ -336,6 +356,11 @@ p {
 @media (max-width: 768px) {
   html {
     font-size: 62.5%;
+  }
+
+  .col3 {
+    width: 30.33%;
+    margin: 1.5%;
   }
   #ham-menu {
     display: inline-block;
@@ -368,12 +393,28 @@ p {
   .nav .nav-menu a:hover::after {
     transform: scaleX(0.2);
   }
+  .nav .nav-menu a {
+    font-weight: 300;
+  }
+}
+
+@media (max-width: 560px) {
+  html {
+    font-size: 50%;
+  }
+  .col3 {
+    width: 47%;
+  }
 }
 
 /* mobile */
-@media (max-width: 450px) {
+@media (max-width: 425px) {
   html {
     font-size: 55%;
+  }
+
+  .col3 {
+    width: 63.67%;
   }
 
   #menu {
