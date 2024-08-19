@@ -1,20 +1,16 @@
-// Fungsi untuk menggulir ke bagian yang ditentukan
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
+// toggle class active
+const navbarNav = document.querySelector('.nav-menu');
+
+// ketika menu diklik
+document.querySelector('#ham-menu').onclick = () => {
+  navbarNav.classList.toggle('active');
+};
+
+// click diluar side bire untuk menghilangkan menu
+const hamMenu = document.querySelector('#ham-menu');
+
+document.addEventListener('click', function (e) {
+  if (!hamMenu.contains(e.target) && !navbarNav.contains(e.target)) {
+    navbarNav.classList.remove('active');
   }
-  
-  // Dapatkan semua link di navbar
-  const navLinks = document.querySelectorAll('.nav-menu a');
-  
-  // Tambahkan event listener ke setiap link
-  navLinks.forEach(link => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      const targetId = link.getAttribute('href').substring(1); // Hapus '#'
-      scrollToSection(targetId);
-    });
-  });
-  
+});
