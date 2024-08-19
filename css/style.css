@@ -415,6 +415,15 @@ p {
 
   .col3 {
     width: 63.67%;
+    /* align-items: center; */
+  }
+
+  /* buat div produk menjadi center di tengah */
+  .row {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    justify-content: center;
   }
 
   #menu {
