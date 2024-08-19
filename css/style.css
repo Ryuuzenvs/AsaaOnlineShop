@@ -1,6 +1,12 @@
+/* membuat warna ff7f00 menjadi variable warna utama1 */
+:root {
+  --utama1: #ff7f00;
+  --utama2: #010101;
+}
+
 /* Aturan umum untuk semua perangkat */
-body, html {
-  
+body,
+html {
   margin: 0;
   padding: 0;
   max-width: 100%;
@@ -13,7 +19,11 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 0;
   padding: 0;
 }
@@ -24,7 +34,7 @@ p {
 
 .container {
   max-width: 1200px;
-  width: 90%;
+  width: 100%;
   margin: auto;
 }
 
@@ -56,6 +66,9 @@ p {
 .col4 {
   width: 30.3333333333%;
   margin: 1.5%;
+  a {
+    padding: 2px; /* Adjust padding values as needed */
+  }
 }
 
 .col5 {
@@ -103,14 +116,15 @@ p {
 }
 
 .nav-container {
-  max-width: 1200px;
-  width: 90%;
-  margin: 0 auto;
+  /* max-width: 1200px; */
+  width: 100%;
   position: fixed;
-  top: 05px; 
   width: 100%;
   background-color: #f0f0f0; /* Ganti warna latar belakang sesuai selera */
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan untuk efek kedalaman */
+  top: 0;
+  right: 0;
+  left: 0;
   z-index: 999;
 }
 
@@ -120,13 +134,48 @@ p {
   margin: 0 1.5%;
   justify-content: space-between;
   align-items: center;
+  z-index: 9999;
 }
+.nav .nav-menu a {
+  display: inline-block;
+  margin: 0.1rem;
+}
+.nav .nav-menu a::after {
+  content: "";
+  display: block;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid black;
+  transform: scaleX(0);
+  transition: 0.1s linear;
+}
+.nav .nav-menu a:hover::after {
+  font-weight: bold;
+  transform: scaleX(0.5);
+}
+
+
+.nav .nav-extra {
+  padding-top: 0.6rem;
+}
+
+.nav .nav-extra a {
+  color: var(--utama1);
+}
+
+.nav .nav-extra a:hover {
+  color: var(--utama2);
+}
+
+/* .nav .nav-menu a:hover{
+  transform: scaleX(0.5);
+} */
+
 .nav-brand h1 a {
   text-decoration: none;
   color: black;
 }
 .nav-brand h1 a span {
-  color: #FF7F00;
+  color: #ff7f00;
 }
 .nav-menu a {
   text-decoration: none;
@@ -134,7 +183,7 @@ p {
   padding: 10px;
 }
 .nav-menu a:hover {
-  color: #FF7F00;
+  color: #ff7f00;
 }
 
 .nav-item {
@@ -147,8 +196,12 @@ p {
   margin-top: 3px;
 }
 
+#ham-menu {
+  display: none;
+}
+
 .btn {
-  background: #FF7F00;
+  background: #ff7f00;
   color: white;
   display: inline-block;
   padding: 10px 30px;
@@ -159,17 +212,15 @@ p {
   overflow: hidden;
   /* background: linear-gradient(to right, #FF7F00, #FF7F00); Gradient awal dengan warna yang sama
   transition: background 1s ease-in-out; */
-  background: linear-gradient(to right, #FF7F00, #FF7F00);
+  background: linear-gradient(to right, #ff7f00, #ff7f00);
   transition: all 0.5s ease-in-out; /* menesuaikan durasi dan easing */
 }
 
-
-
 .btn:hover {
   color: black;
-  background-color: #00BFFF;
+  background-color: #00bfff;
   /* background: linear-gradient(to right, #00BFFF, #FF7F00); Gradient akhir dengan warna yang berbeda */
-  background: linear-gradient(to right, #00BFFF, #FF7F00);
+  background: linear-gradient(to right, #00bfff, #ff7f00);
   font-weight: 500;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
@@ -191,7 +242,7 @@ p {
   margin-bottom: 20px;
 }
 .hero-desc h1 span {
-  color: #00BFFF;
+  color: #00bfff;
 }
 .hero-desc p {
   line-height: 180%;
@@ -223,7 +274,7 @@ p {
   color: #777;
 }
 .food-card .fc-price {
-  color: #FF7F00;
+  color: #ff7f00;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -257,7 +308,7 @@ p {
 .footer ul li {
   padding: 5px 0;
   color: white;
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */
 
 .copyright {
   color: white;
@@ -265,100 +316,67 @@ p {
   text-align: center;
 }
 
-.copyright a{
+.copyright a {
   color: #eee;
 }
 
-/* Untuk layar dengan lebar maksimal 1200px */
-@media (max-width: 1200px) {
-  .container {
-      width: 100%;
-      padding: 10px;
-  }
+.spacer10{
+  
+}
 
-  .sidebar {
-      width: 100%;
-      margin-top: 20px;
-  }
-
-  .content {
-      width: 100%;
-      padding: 10px;
+/* media queries */
+/* laptop */
+@media (max-width: 1366px) {
+  html {
+    font-size: 75%;
   }
 }
 
-/* Untuk layar dengan lebar maksimal 992px */
-@media (max-width: 992px) {
-  .navbar {
-      flex-direction: column;
-      align-items: flex-start;
-  }
-
-  .navbar-menu {
-      display: block;
-      width: 100%;
-  }
-
-  .content {
-      width: 100%;
-      padding: 10px;
-  }
-
-  .sidebar {
-      width: 100%;
-      margin-top: 20px;
-  }
-
-  .footer {
-      width: 100%;
-      text-align: center;
-  }
-}
-
-/* Untuk layar dengan lebar maksimal 768px */
+/* tablet */
 @media (max-width: 768px) {
-  .header, .content, .footer {
-      padding: 15px;
-      text-align: center;
+  html {
+    font-size: 62.5%;
+  }
+  #ham-menu {
+    display: inline-block;
   }
 
-  .navbar {
-      display: block;
+  .nav .nav-menu {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: #fff;
+    width: 30rem;
+    height: 100vh;
+    transition: 0.3s;
   }
 
-  .navbar-menu {
-      display: block;
-      width: 100%;
+  .nav .nav-menu.active {
+    right: 0;
+  }
+  .nav .nav-menu a {
+    color: var(--utama2);
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
   }
 
-  .container {
-      padding: 0 15px;
+  .nav .nav-menu a::after {
+    transform-origin: 0 0;
   }
-
-  .sidebar {
-      display: none;
-  }
-}
-
-/* Untuk layar dengan lebar maksimal 576px */
-@media (max-width: 576px) {
-  .header, .content, .footer {
-      padding: 10px;
-  }
-
-  .container {
-      padding: 0 10px;
-  }
-
-  .navbar-menu {
-      display: block;
-      width: 100%;
-  }
-
-  .navbar {
-      flex-direction: column;
-      align-items: flex-start;
+  .nav .nav-menu a:hover::after {
+    transform: scaleX(0.2);
   }
 }
 
+/* mobile */
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
 
+  #menu {
+    display: inline-block;
+  }
+}
