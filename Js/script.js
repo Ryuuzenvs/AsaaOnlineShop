@@ -168,3 +168,20 @@ searchButton.addEventListener('click', () => {
     }
   }
 });
+
+// debug antiscroll
+const menuLinks = document.querySelectorAll('a[href^="#"]');
+
+menuLinks.forEach(link => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault(); // Cegah scroll ke atas
+    const targetId = link.getAttribute('href');
+
+    const targetElement = document.getElementById(targetId.slice(1)); // Hapus karakter "#"
+
+    if (targetElement) {
+      // Scroll ke elemen yang diinginkan dengan animasi (opsional)
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
