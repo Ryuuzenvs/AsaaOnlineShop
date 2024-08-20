@@ -2,6 +2,8 @@
 :root {
   --utama1: #ff7f00;
   --utama2: #010101;
+  --sekuder1: #f0f0f0;
+  --sekuder2: #333;
 }
 
 /* Aturan umum untuk semua perangkat */
@@ -17,6 +19,19 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
+  transition: 0.2s linear;
+}
+
+body.active{
+  background-color: var(--utama2);
+  color: var(--sekuder1);
+  transition: 0.2s linear;
+}
+
+.footer.active{
+  background-color: var(--utama1);
+  color: black;
+  transition: 0.2s linear;
 }
 
 h1,
@@ -32,10 +47,31 @@ p {
   margin: 0;
 }
 
-.container {
+/* .container {
   max-width: 1200px;
   width: 100%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+.nav-container.active{
+  background-color: var(--utama1);
+  color: var(--sekuder1);
+  transition: 0.2s linear;
+  .nav{
+    .nav-brand{
+      h1{
+        a{
+          span{
+            color: var(--sekuder1);
+          }
+        }
+
+      }
+    }
+  }
 }
 
 .row {
@@ -128,6 +164,23 @@ p {
   z-index: 999;
 }
 
+/* ketika tema terang, display svg untuk tema gelap = none, dan sebaliknya */
+
+.darkmode .pemisah a svg {
+  fill: var(--utama1); /* Ubah warna fill ikon untuk tema gelap */
+}
+
+.darkmode.active .pemisah a svg {
+  fill: #fffefe; /* Ubah warna fill ikon untuk tema gelap */
+  transition: 0.2s linear;
+}
+
+.darkmode.active a svg {
+  color: #ffffff;
+  transition: 0.2s linear;
+} 
+
+
 .nav {
   display: flex;
   flex-wrap: wrap;
@@ -200,6 +253,30 @@ p {
   display: none;
 }
 
+.nav-extra .shopping-cart {
+  position: absolute;
+  top: 100%;
+  right: -100%;
+  background-color: #ffbe32;
+  width: 30rem;
+  height: 100vh;
+  transition: 0.3s;
+  margin: 0.1rem;
+  font-weight: bold;
+}
+.nav-extra .shopping-cart.active {
+  right: 0;
+}
+
+.nav-extra .shopping-cart::after {
+  content: "";
+  display: block;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid black;
+  transform: scaleX(0);
+  transition: 0.1s linear;
+}
+
 .btn {
   background: #ff7f00;
   color: white;
@@ -216,6 +293,67 @@ p {
   transition: all 0.5s ease-in-out; /* menesuaikan durasi dan easing */
 }
 
+/* Gaya untuk div pesanan di dalam sidebar keranjang */
+.shopping-cart-items {
+  padding: 20px;
+  overflow-y: auto; /* Agar konten dapat di-scroll jika terlalu banyak */
+  background-color: #ffffff;
+}
+
+.shopping-cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ffffff;
+}
+
+.shopping-cart-item .product-name {
+  flex: 1;
+}
+
+.shopping-cart-item .product-price {
+  font-weight: bold;
+}
+
+.add-product-button {
+  background-color: #ffffff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buy-button {
+  justify-content: center;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+/* membuat tombol buy button posisi nya menjadi center, atau tengah mendatar */
+.buy-button {
+  margin: 0 auto;
+  display: block;
+  margin-top: 10%;
+}
+
+.buy-button {
+  width: 200px; /* Sesuaikan dengan lebar yang Anda inginkan */
+  /* Gaya lainnya */
+}
+
+/* membuat div total price tengah, tidak berada di sisi kiri sidebar */
+.total-price {
+  margin: 0 auto;
+  display: block;
+  margin: 4%;
+  margin-left: 40%;
+  }
+
+
 .btn:hover {
   color: black;
   background-color: #00bfff;
@@ -231,6 +369,27 @@ p {
 
 .img-responsive {
   width: 100%;
+  display: inline;
+  position: relative;
+  transition: 0.2s linear;
+}
+.img-responsive1.active {
+  width: 100%;
+  display: inline;
+  position: relative;
+  transition: 0.2s linear;
+}
+.img-responsive1 {
+  width: 100%;
+  display: none;
+  position: absolute;
+  transition: 0.2s linear;
+}
+.img-responsive.active {
+  width: 100%;
+  display: none;
+  position: absolute;
+  transition: 0.2s linear;
 }
 
 .hero {
@@ -370,7 +529,7 @@ p {
     position: absolute;
     top: 100%;
     right: -100%;
-    background-color: #fff;
+    background-color: #ffbe32;
     width: 30rem;
     height: 100vh;
     transition: 0.3s;
@@ -429,4 +588,15 @@ p {
   #menu {
     display: inline-block;
   }
+
+  /* mengecilkan ukuran icon link pada class col4 follow us */
+  .col4 {
+    /* mengecilkan elemen img nya saja yang ada pada elemen a */
+    a img {
+      width: 15px;
+      height: 15px;
+
+    }
+
+}
 }
