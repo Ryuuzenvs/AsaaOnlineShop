@@ -1,5 +1,34 @@
+// toggle tema gelap
+const body = document.body;
+const footer = document.querySelector(".footer");
+const navbar = document.querySelector(".nav-container");
+const hero1 = document.querySelector(".img-responsive");
+const hero2 = document.querySelector(".img-responsive1");
+// debug nav menu, karna tidak bisa nav menu double function js, maka menggunakan header
+var navMenu = document.querySelector(".header");
+
+function setDarkMode(isDark) {
+  // Set properti CSS sesuai keinginan Anda
+  document.body.classList.toggle("darkmode", isDark);
+  if (isDark) {
+    body.classList.toggle("active");
+    footer.classList.toggle("active");
+    navbar.classList.toggle("active");
+    hero1.classList.toggle("active");
+    hero2.classList.toggle("active");
+    navMenu.classList.toggle("active");
+    // // Ubah ke tema gelap
+    // root.style.setProperty('--utama1', '#010101');
+    // root.style.setProperty('--utama2', '#f0f0f0');
+  } else {
+    // Ubah ke tema terang
+    // root.style.setProperty('--utama1', '#ff7f00');
+    // root.style.setProperty('--utama2', '#333');
+  }
+}
+
 // toggle class active
-const navbarNav = document.querySelector(".nav-menu");
+var navbarNav = document.querySelector(".nav-menu");
 
 // ketika menu diklik
 document.querySelector("#ham-menu").onclick = () => {
@@ -90,27 +119,52 @@ increaseButtons.forEach((button) => {
   });
 });
 
-const body = document.body;
-const footer = document.querySelector(".footer");
-const navbar = document.querySelector(".nav-container");
-const hero1 = document.querySelector(".img-responsive");
-const hero2 = document.querySelector(".img-responsive1");
+// fitur search
+const searchButton = document.getElementById('search');
+const searchInput = document.getElementById('search-input');
 
-function setDarkMode(isDark) {
-  // Set properti CSS sesuai keinginan Anda
-  document.body.classList.toggle("darkmode", isDark);
-  if (isDark) {
-    body.classList.toggle("active");
-    footer.classList.toggle("active");
-    navbar.classList.toggle("active");
-    hero1.classList.toggle("active");
-    hero2.classList.toggle("active");
-    // // Ubah ke tema gelap
-    // root.style.setProperty('--utama1', '#010101');
-    // root.style.setProperty('--utama2', '#f0f0f0');
-  } else {
-    // Ubah ke tema terang
-    // root.style.setProperty('--utama1', '#ff7f00');
-    // root.style.setProperty('--utama2', '#333');
+function clearHighlights() {
+  const contentElements = document.querySelectorAll('.search-highlight');
+  contentElements.forEach(element => {
+    element.classList.remove('search-highlight');
+  });
+}
+
+searchInput.addEventListener('keyup', function() {
+  const searchTerm = this.value.toLowerCase();
+  searchContent(searchTerm);
+});
+
+function searchContent(searchTerm) {
+  const contentElements = document.querySelectorAll('h1, h2, h3, p');
+
+  for (let i = 0; i < contentElements.length; i++) {
+    const contentElement = contentElements[i];
+    const contentText = contentElement.textContent.toLowerCase();
+
+    if (contentText.indexOf(searchTerm) !== -1) {
+      contentElement.classList.add('search-highlight');
+    } else {
+      contentElement.classList.remove('search-highlight');
+    }
   }
 }
+
+searchButton.addEventListener('click', () => {
+  if (searchInput.classList.contains('hidden')) {
+    searchInput.classList.remove('hidden');
+    searchInput.classList.add('nonaktif', 'muncul');
+
+    setTimeout(() => {
+      searchInput.classList.add('active');
+    }, 300);
+  } else {
+    searchInput.classList.remove('nonaktif', 'active');
+    searchInput.classList.add('hidden');
+
+    // Hapus semua sorotan jika input kosong
+    if (searchInput.value === '') {
+      clearHighlights();
+    }
+  }
+});
