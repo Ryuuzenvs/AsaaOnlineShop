@@ -22,13 +22,13 @@ body {
   transition: 0.2s linear;
 }
 
-body.active{
+body.active {
   background-color: var(--utama2);
   color: var(--sekuder1);
   transition: 0.2s linear;
 }
 
-.footer.active{
+.footer.active {
   background-color: var(--utama1);
   color: black;
   transition: 0.2s linear;
@@ -56,19 +56,18 @@ p {
   align-items: center;
 } */
 
-.nav-container.active{
+.nav-container.active {
   background-color: var(--utama1);
   color: var(--sekuder1);
   transition: 0.2s linear;
-  .nav{
-    .nav-brand{
-      h1{
-        a{
-          span{
+  .nav {
+    .nav-brand {
+      h1 {
+        a {
+          span {
             color: var(--sekuder1);
           }
         }
-
       }
     }
   }
@@ -165,9 +164,9 @@ p {
 }
 
 /* ketika tema terang, display svg untuk tema gelap = none, dan sebaliknya */
-
 .darkmode .pemisah a svg {
   fill: var(--utama1); /* Ubah warna fill ikon untuk tema gelap */
+
 }
 
 .darkmode.active .pemisah a svg {
@@ -178,8 +177,7 @@ p {
 .darkmode.active a svg {
   color: #ffffff;
   transition: 0.2s linear;
-} 
-
+}
 
 .nav {
   display: flex;
@@ -198,13 +196,16 @@ p {
   content: "";
   display: block;
   padding-bottom: 0.5rem;
-  border-bottom: 0.1rem solid black;
+  border-bottom: 0.15rem solid rgb(0, 0, 0);
   transform: scaleX(0);
   transition: 0.1s linear;
 }
 .nav .nav-menu a:hover::after {
-  font-weight: bold;
-  transform: scaleX(0.5);
+  transform: scaleX(0.7);
+}
+
+.header.active .nav-container .nav .nav-menu a::after {
+  border-bottom: 0.15rem solid white;
 }
 
 .nav .nav-extra {
@@ -235,8 +236,17 @@ p {
   color: black;
   padding: 10px;
 }
+
+.header.active .nav-menu a {
+  color: white;
+}
+
 .nav-menu a:hover {
   color: #ff7f00;
+}
+
+.headeer.active .nav-menu a:hover {
+  color: var(--sekuder1);
 }
 
 .nav-item {
@@ -351,9 +361,42 @@ p {
   display: block;
   margin: 4%;
   margin-left: 40%;
-  }
+}
 
+.search-highlight {
+  background-color: #ffff99;
+  font-weight: bold;
+}
 
+.hidden {
+  display: none;
+  transition: 0.3s linear; /* Animasi untuk semua properti selama 0.3 detik */
+}
+
+.nonaktif {
+  position: absolute;
+  top: 50%;
+  left:78%;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  opacity: 1; /* Pastikan input terlihat saat nonaktif */
+  transition: all 0.3s linear; /* Animasi untuk semua properti selama 0.3 detik */
+}
+
+.muncul {
+  opacity: 0; /* Sembunyikan input saat muncul pertama kali */
+  transform: translateY(-20%); /* Posisi awal sebelum animasi */
+  transition: 0.3s linear; /* Animasi untuk semua properti selama 0.3 detik */
+}
+
+.muncul.active {
+  transition: all 0.3s ease-in-out; /* Animasi untuk semua properti selama 0.3 detik */
+  opacity: 1; /* Tampilkan input */
+  transform: translateY(45%); /* Kembalikan ke posisi semula */
+}
 .btn:hover {
   color: black;
   background-color: #00bfff;
@@ -481,11 +524,19 @@ p {
 
 /* media queries */
 /* laptop */
-@media (max-width: 1366px) {
+@media (max-width: 1440px) {
   html {
     font-size: 75%;
   }
 
+  .nonaktif {
+    left:80%;
+  }
+
+  .muncul.active {
+    transform: translateY(44%); /* Kembalikan ke posisi semula */
+  }
+  
   /* .col3{
     width: 22%;
   } */
@@ -495,20 +546,36 @@ p {
   html {
     font-size: 70%;
   }
-
-  /* .col3{
-    width: 22%;
-  } */
-}
-
-@media (max-width: 960) {
-  html {
-    font-size: 65%;
+  
+    .nonaktif {
+      left:73%;
+    }
+  
+    .muncul.active {
+      transform: translateY(44%); /* Kembalikan ke posisi semula */
+    }
+    
+    /* .col3{
+      width: 22%;
+    } */
   }
+  
+  @media (max-width: 960) {
+    html {
+      font-size: 65%;
+    }
 
-  .col3 {
-    width: 22.3;
-  }
+    .nonaktif {
+      left:10%;
+    }
+  
+    .muncul.active {
+      transform: translateY(44%); /* Kembalikan ke posisi semula */
+    }
+    
+    .col3 {
+      width: 22.3;
+    }
 }
 
 /* tablet */
@@ -516,7 +583,14 @@ p {
   html {
     font-size: 62.5%;
   }
+  .nonaktif {
+    left:65%;
+  }
 
+  .muncul.active {
+    transform: translateY(44%); /* Kembalikan ke posisi semula */
+  }
+  
   .col3 {
     width: 30.33%;
     margin: 1.5%;
@@ -524,7 +598,7 @@ p {
   #ham-menu {
     display: inline-block;
   }
-
+  
   .nav .nav-menu {
     position: absolute;
     top: 100%;
@@ -534,7 +608,7 @@ p {
     height: 100vh;
     transition: 0.3s;
   }
-
+  
   .nav .nav-menu.active {
     right: 0;
   }
@@ -545,7 +619,7 @@ p {
     padding: 0.5rem;
     font-size: 2rem;
   }
-
+  
   .nav .nav-menu a::after {
     transform-origin: 0 0;
   }
@@ -571,7 +645,14 @@ p {
   html {
     font-size: 55%;
   }
-
+  .nonaktif {
+    left:40%;
+  }
+  
+  .muncul.active {
+    transform: translateY(44%); /* Kembalikan ke posisi semula */
+  }
+  
   .col3 {
     width: 63.67%;
     /* align-items: center; */
@@ -595,8 +676,6 @@ p {
     a img {
       width: 15px;
       height: 15px;
-
     }
-
-}
+  }
 }
