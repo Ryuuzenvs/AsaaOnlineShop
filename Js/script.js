@@ -4,6 +4,7 @@ const footer = document.querySelector(".footer");
 const navbar = document.querySelector(".nav-container");
 const hero1 = document.querySelector(".img-responsive");
 const hero2 = document.querySelector(".img-responsive1");
+const heroDesc = document.querySelector(".hero-desc");
 // debug nav menu, karna tidak bisa nav menu double function js, maka menggunakan header
 var navMenu = document.querySelector(".header");
 
@@ -17,6 +18,7 @@ function setDarkMode(isDark) {
     hero1.classList.toggle("active");
     hero2.classList.toggle("active");
     navMenu.classList.toggle("active");
+    heroDesc.classList.toggle("active");
     // // Ubah ke tema gelap
     // root.style.setProperty('--utama1', '#010101');
     // root.style.setProperty('--utama2', '#f0f0f0');
@@ -120,50 +122,50 @@ increaseButtons.forEach((button) => {
 });
 
 // fitur search
-const searchButton = document.getElementById('search');
-const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById("search");
+const searchInput = document.getElementById("search-input");
 
 function clearHighlights() {
-  const contentElements = document.querySelectorAll('.search-highlight');
-  contentElements.forEach(element => {
-    element.classList.remove('search-highlight');
+  const contentElements = document.querySelectorAll(".search-highlight");
+  contentElements.forEach((element) => {
+    element.classList.remove("search-highlight");
   });
 }
 
-searchInput.addEventListener('keyup', function() {
+searchInput.addEventListener("keyup", function () {
   const searchTerm = this.value.toLowerCase();
   searchContent(searchTerm);
 });
 
 function searchContent(searchTerm) {
-  const contentElements = document.querySelectorAll('h1, h2, h3, p');
+  const contentElements = document.querySelectorAll("h1, h2, h3, p");
 
   for (let i = 0; i < contentElements.length; i++) {
     const contentElement = contentElements[i];
     const contentText = contentElement.textContent.toLowerCase();
 
     if (contentText.indexOf(searchTerm) !== -1) {
-      contentElement.classList.add('search-highlight');
+      contentElement.classList.add("search-highlight");
     } else {
-      contentElement.classList.remove('search-highlight');
+      contentElement.classList.remove("search-highlight");
     }
   }
 }
 
-searchButton.addEventListener('click', () => {
-  if (searchInput.classList.contains('hidden')) {
-    searchInput.classList.remove('hidden');
-    searchInput.classList.add('nonaktif', 'muncul');
+searchButton.addEventListener("click", () => {
+  if (searchInput.classList.contains("hidden")) {
+    searchInput.classList.remove("hidden");
+    searchInput.classList.add("nonaktif", "muncul");
 
     setTimeout(() => {
-      searchInput.classList.add('active');
+      searchInput.classList.add("active");
     }, 300);
   } else {
-    searchInput.classList.remove('nonaktif', 'active');
-    searchInput.classList.add('hidden');
+    searchInput.classList.remove("nonaktif", "active");
+    searchInput.classList.add("hidden");
 
     // Hapus semua sorotan jika input kosong
-    if (searchInput.value === '') {
+    if (searchInput.value === "") {
       clearHighlights();
     }
   }
@@ -172,16 +174,16 @@ searchButton.addEventListener('click', () => {
 // debug antiscroll
 const menuLinks = document.querySelectorAll('a[href^="#"]');
 
-menuLinks.forEach(link => {
-  link.addEventListener('click', (event) => {
+menuLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
     event.preventDefault(); // Cegah scroll ke atas
-    const targetId = link.getAttribute('href');
+    const targetId = link.getAttribute("href");
 
     const targetElement = document.getElementById(targetId.slice(1)); // Hapus karakter "#"
 
     if (targetElement) {
       // Scroll ke elemen yang diinginkan dengan animasi (opsional)
-      targetElement.scrollIntoView({ behavior: 'smooth' });
+      targetElement.scrollIntoView({ behavior: "smooth" });
     }
   });
 });
